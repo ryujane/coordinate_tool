@@ -136,6 +136,9 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
   void initState() {
     windowManager.addListener(this);
     super.initState();
+    lngController.text='A';
+    latController.text='B';
+    dataRowController.text='1';
   }
 
   @override
@@ -230,19 +233,19 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
                   const Text('经度列:'),
                   SizedBox(
                     width: 80,
-                    child: TextBox(placeholder: 'A',controller: lngController,initialValue: 'A',),
+                    child: TextBox(placeholder: 'A',controller: lngController,),
                   ),
                   const SizedBox(width: 10,),
                   const Text('纬度列:'),
                   SizedBox(
                     width: 80,
-                    child: TextBox(placeholder: 'B',controller: latController,initialValue: 'B',),
+                    child: TextBox(placeholder: 'B',controller: latController,),
                   ),
                   const SizedBox(width: 10,),
                   const Text('数据行:'),
                   SizedBox(
                     width: 80,
-                    child: TextBox(placeholder: '1',initialValue:'1',controller: dataRowController,keyboardType: TextInputType.number,),
+                    child: TextBox(placeholder: '1',controller: dataRowController,keyboardType: TextInputType.number,),
                   )
                 ],
               ),
