@@ -39,21 +39,21 @@ void main() async {
 
   if (isDesktop) {
     WidgetsFlutterBinding.ensureInitialized();
-    await flutter_acrylic.Window.initialize();
+    // await flutter_acrylic.Window.initialize();
     await WindowManager.instance.ensureInitialized();
-    windowManager.waitUntilReadyToShow().then((_) async {
-      await windowManager.setTitleBarStyle(
-        TitleBarStyle.hidden,
-        windowButtonVisibility: false,
-      );
-      await windowManager.setSize(const Size(650, 520));
-      await windowManager.setMinimumSize(const Size(650, 520));
-      await windowManager.setMaximumSize(const Size(650, 520));
-      await windowManager.center();
-      await windowManager.setPreventClose(false);
-      await windowManager.setSkipTaskbar(false);
-      await windowManager.setFullScreen(false);
+    WindowOptions options = const WindowOptions(
+      size: Size(620, 520),
+      center: true,
+      fullScreen: false,
+      maximumSize: Size(620, 520),
+      minimumSize: Size(620, 520),
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.hidden,
+    );
+    windowManager.waitUntilReadyToShow(options,() async {
       await windowManager.show();
+      await windowManager.focus();
+      await windowManager.setPreventClose(false);
 
     });
   }
@@ -113,7 +113,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => _MyHomePageState();
 }
@@ -121,7 +121,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with WindowListener {
   final viewKey = GlobalKey(debugLabel: 'Navigation View Key');
   int originIndex = 0;
-  int toIndex=0;
+  int toIndex=1;
   String latitudeIndex='';
   String longitudeIndex='';
   TextEditingController lngController =  TextEditingController();
@@ -472,6 +472,13 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
         },
       );
     }
+  }
+
+  @override
+  void onWindowFocus() {
+    setState(() {
+
+    });
   }
 }
 
