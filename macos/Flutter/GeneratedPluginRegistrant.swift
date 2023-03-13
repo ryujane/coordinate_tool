@@ -8,7 +8,7 @@ import Foundation
 import desktop_drop
 import file_selector_macos
 import macos_window_utils
-import path_provider_foundation
+import path_provider_macos
 import screen_retriever
 import system_theme
 import window_manager

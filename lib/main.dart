@@ -39,7 +39,7 @@ void main() async {
 
   if (isDesktop) {
     WidgetsFlutterBinding.ensureInitialized();
-    // await flutter_acrylic.Window.initialize();
+    await flutter_acrylic.Window.initialize();
     await WindowManager.instance.ensureInitialized();
     WindowOptions options = const WindowOptions(
       size: Size(620, 520),
@@ -54,6 +54,7 @@ void main() async {
       await windowManager.show();
       await windowManager.focus();
       await windowManager.setPreventClose(false);
+      await windowManager.setTitleBarStyle(TitleBarStyle.hidden,windowButtonVisibility: false);
 
     });
   }
